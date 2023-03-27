@@ -9,7 +9,7 @@ function App() {
     >
       <div className="overlay fixed  bg-black opacity-60 top-0 left-0 h-full w-full"></div>
       <div className="z-10 relative">
-        <h1 className="text-slate-100 text-5xl  font-bold text-center pt-10">
+        <h1 className="text-slate-100 text-2xl  sm:text-5xl  font-bold text-center pt-10">
           Weather App
         </h1>
         <Form />

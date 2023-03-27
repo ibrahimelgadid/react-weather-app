@@ -1,13 +1,10 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Empty from "../Empty";
-import Loader from "../Loader";
 import "./Form.css";
 
-const Form = (props) => {
+const Form = () => {
   const [weather, setweather] = useState({});
-  const [countries, setcountries] = useState([]);
-  const [cities, setcities] = useState([]);
   const [city, setcity] = useState("");
 
   const [loading, setloading] = useState(true);
@@ -54,12 +51,11 @@ const Form = (props) => {
 
   return (
     <>
-      <form className="py-12 flex justify-center">
+      <form className="sm:py-12 py-6 flex justify-center sm:flex-row flex-col gap-4 px-4">
         <input
-          className="text-sky-500 rounded-md  font-semibold text-lg bg-transparent border-[3px] border-red-700
-          p-2  placeholder:text-slate-200 placeholder:text-lg
+          className="text-slate-300 rounded-md  font-semibold text-lg  bg-transparent border-[3px]  border-red-700
+          p-2  placeholder:text-slate-200 placeholder:text-lg 
           focus:outline-none  caret-red-600 
-          transition-all duration-500
           "
           type="text"
           placeholder="Insert city name...."
@@ -70,13 +66,13 @@ const Form = (props) => {
 
         <button
           onClick={getWeatherByCity}
-          className="bg-red-700 p-2 ml-2 text-white rounded-sm font-medium"
+          className="bg-red-700 p-2 ml-2 text-white rounded-sm font-medium text-base"
         >
           Select City
         </button>
         <button
           onClick={getWeatherByGeoLocation}
-          className="bg-red-700 p-2 ml-2 text-white rounded-sm font-medium"
+          className="bg-red-700 p-2 ml-2 text-white rounded-sm font-medium text-base"
         >
           Currunt Location
         </button>
@@ -84,20 +80,19 @@ const Form = (props) => {
 
       {!loading ? (
         <>
-          <div className="location  px-10 py-16 flex">
+          <div className="location  px-10 sm:py-16 py-4 flex sm:flex-row flex-col gap-4">
             <div className="geo text-slate-100  font-semibold flex flex-col">
-              <span className="text-slate-100 text-xl uppercase">
+              <span className="text-slate-100 sm:text-xl text-md uppercase">
                 {weather.location.region}
               </span>
-              <span className="text-slate-100 text-xl uppercase">
+              <span className="text-slate-100 sm:text-xl text-md uppercase">
                 {weather.location.tz_id}
               </span>
               <span className="text-slate-100 font-extrabold ">
                 {weather.location.lat + "E " + weather.location.lon + "N"}
               </span>
             </div>
-            <div className="border w-60 rounded-lg overflow-hidden relative mx-auto">
-              <div className="overlay absolute w-full h-full bg-black opacity-40"></div>
+            <div className="border w-60 rounded-lg overflow-hidden relative mx-auto bg-black bg-opacity-60">
               <h2 className="text-2xl text-white text-center py-2 font-bold z-10 relative">
                 Now
               </h2>
